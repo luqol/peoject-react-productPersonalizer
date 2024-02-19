@@ -1,19 +1,13 @@
 import styles from './Product.module.scss';
-import clsx from 'clsx';
-import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-import shortid from 'shortid';
 import ProductImage from '../ProductImage/ProductImage';
+import ProductForm from '../ProductForm/ProductForm';
 
 const Product =  ({name, title, basePrice, colors, sizes})  => {
   const [currentColor, setCurrentColor] = useState ( colors[0] );
   const [currentSize, setCurrentSize] = useState (sizes[0].name);
-
-  const prepareColorName  = color => {
-    return styles['color' + color[0].toUpperCase() + color.substr(1).toLowerCase()];
-  };
-
+ 
   const changeSize = e => {
     e.preventDefault();
     setCurrentSize(e.target.innerHTML);
@@ -45,23 +39,7 @@ const Product =  ({name, title, basePrice, colors, sizes})  => {
           <h2 className={styles.name}>{title}</h2>
           <span className={styles.price}>Price: {getPrice()}$</span>
         </header>
-        <form onSubmit={handleSubmit}>
-          <div className={styles.sizes}>
-            <h3 className={styles.optionLabel}>Sizes</h3>
-            <ul className={styles.choices}>
-            {sizes.map(size => <li key={shortid()} ><button type="button" onClick={changeSize} className={clsx( (currentSize === size.name) && styles.active)} >{size.name}</button></li>)}
-            </ul>
-          </div>
-          <div className={styles.colors}>
-            <h3 className={styles.optionLabel}>Colors</h3>
-            <ul className={styles.choices}>
-            {colors.map( color => <li key={shortid()}><button type="button" onClick={changeColor} color={color} className={clsx(prepareColorName(color), (currentColor === color) && styles.active)}/></li>)}
-            </ul>
-          </div>
-          <Button className={styles.button}>
-            <span className="fa fa-shopping-cart" />
-          </Button>
-        </form>
+        <ProductForm handleSubmit={handleSubmit} sizes={sizes} changeSize={changeSize} changeColor={changeColor} colors={colors} currentSize={currentSize} currentColor={currentColor} />
       </div>
     </article>
   )
