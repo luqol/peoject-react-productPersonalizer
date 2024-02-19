@@ -1,6 +1,7 @@
 import styles from './OptionColor.module.scss';
 import shortid from 'shortid';
 import clsx from 'clsx';
+import PropTypes from 'prop-types';
 
 const OptionColor = ({colors, changeColor, currentColor}) => {
     const prepareColorName  = color => {
@@ -14,6 +15,12 @@ const OptionColor = ({colors, changeColor, currentColor}) => {
       </ul>
     </div>
   );
+};
+
+OptionColor.propTypes = {
+    colors: PropTypes.array.isRequired,
+    changeColor: PropTypes.func.isRequired,
+    currentColor: PropTypes.string.isRequired,
 };
 
 export default OptionColor;

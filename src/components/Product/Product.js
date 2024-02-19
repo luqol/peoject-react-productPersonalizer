@@ -42,7 +42,7 @@ const Product =  ({name, title, basePrice, colors, sizes})  => {
         <ProductForm handleSubmit={handleSubmit} sizes={sizes} changeSize={changeSize} changeColor={changeColor} colors={colors} currentSize={currentSize} currentColor={currentColor} />
       </div>
     </article>
-  )
+  );
 };
 
 Product.propTypes = { 
