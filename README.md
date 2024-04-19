@@ -1,3 +1,6 @@
+# Product personalizer
+Mini projekt pozwalajacy na modyfikacje zdjecia i ceny produktu 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
